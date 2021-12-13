@@ -1,0 +1,16 @@
+str_list = open('depth.txt').read().splitlines()
+int_list = list(map(int, str_list))
+inc_list = [""]
+
+for i in range(2, len(int_list)-1):
+  curr = int_list[i] + int_list[i+1] + int_list[i-1]
+  prev = int_list[i] + int_list[i-1] + int_list[i-2]
+  print(curr)
+  print(prev)
+  if prev < curr:
+    inc_list.append(str(curr) + " " + "increased")
+    print(str(curr) + " is bigger than " + str(prev))
+  else:
+    pass
+
+print(len(inc_list)-1)

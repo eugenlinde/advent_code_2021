@@ -1,0 +1,23 @@
+str_list = open('planned_course.txt').read().splitlines()
+split_list = []
+hor_value = 0
+dep_value = 0 
+aim_value = 0
+
+for i in range(0, len(str_list)):
+  split_list.append(str_list[i].split())
+
+for i in range(0, len(split_list)):
+  key = [k[0] for k in split_list]
+  value = [v[1] for v in split_list]
+  if "forward" in split_list[i]:
+    hor_value = hor_value + int(value[i])
+    dep_value = dep_value + (aim_value * int(value[i]))
+  elif "down" in split_list[i]:
+    aim_value = aim_value + int(value[i])
+  elif "up" in split_list[i]:
+    aim_value = aim_value - int(value[i])
+  else:
+    pass
+
+print(hor_value * dep_value)
